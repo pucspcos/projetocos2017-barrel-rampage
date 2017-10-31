@@ -14,7 +14,8 @@ public class Explosive_Barrel : MonoBehaviour
     {
         gameObject.SetActive(true);
         m_ExplosionParticles = Instantiate(m_ExplosionPrefab).GetComponent<ParticleSystem>();
-        m_ExplosionParticles.gameObject.SetActive(false);
+        m_ExplosionParticles.tag = "BarrelExplosionParticle";
+        m_ExplosionParticles.gameObject.SetActive(true);
     }
 
     private void Start()
@@ -28,7 +29,6 @@ public class Explosive_Barrel : MonoBehaviour
         {
             isShot = true;
             m_ExplosionParticles.transform.position = transform.position;
-            m_ExplosionParticles.gameObject.SetActive(true);
             m_ExplosionParticles.Play();
             if (coll.gameObject.tag == "P1")
             {
@@ -41,13 +41,44 @@ public class Explosive_Barrel : MonoBehaviour
             GameManager.managerInstance.m_ActiveBarrels--;
             gameObject.SetActive(false);
         }
+
+        
     }
 
-    public void ResetBarrel()
+    private void OnTriggerEnter(Collider other)
     {
-        gameObject.SetActive(true);
-        m_ExplosionParticles = Instantiate(m_ExplosionPrefab).GetComponent<ParticleSystem>();
-        m_ExplosionParticles.gameObject.SetActive(false);
-    }
+        if (other.gameObject.name.Contains("CompleteShell") && isShot == false)
+        {
+            isShot = true;
+            m_ExplosionParticles.transform.position = transform.position;
+            m_ExplosionParticles.Play();
+            if (other.gameObject.tag == "P1")
+            {
+                GameManager.managerInstance.playerOnePointUp();
+            }
+            else if (other.gameObject.tag == "P2")
+            {
+                GameManager.managerInstance.playerTwoPointUp();
+            }
+            GameManager.managerInstance.m_ActiveBarrels--;
+            gameObject.SetActive(false);
+        }
 
+        else if (other.gameObject.name.Contains("CompleteShellExplosion") && isShot == false)
+        {
+            isShot = true;
+            m_ExplosionParticles.transform.position = transform.position;
+            m_ExplosionParticles.Play();
+            if (other.gameObject.tag == "P1")
+            {
+                GameManager.managerInstance.playerOnePointUp();
+            }
+            else if (other.gameObject.tag == "P2")
+            {
+                GameManager.managerInstance.playerTwoPointUp();
+            }
+            GameManager.managerInstance.m_ActiveBarrels--;
+            gameObject.SetActive(false);
+        }
+    }
 }

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using FMOD;
+using FMOD.Studio;
+using FMODUnity;
 
 namespace Complete
 {
@@ -24,7 +27,11 @@ namespace Complete
         public float timeLeft;
         public Transform[] barrelSpawns;
         public GameObject[] roundBarrels;
-        public Explosive_Barrel[] barrelsProperties;
+        public bool isRoundPlaying;
+        public float soundTimer;
+        public string soundtrack = "event:/Soundtrack";
+        public EventInstance musicEvent;
+        public ParameterInstance sampleInstance;
 
         private int m_RoundNumber;                  // Which round the game is currently on.
         private WaitForSeconds m_StartWait;         // Used to have a delay whilst the round starts.
@@ -41,7 +48,7 @@ namespace Complete
 
             else
             {
-                Debug.LogError("More than one Game Manager on the scene!");
+                UnityEngine.Debug.LogError("More than one Game Manager on the scene!");
             }
         }
 
@@ -51,13 +58,16 @@ namespace Complete
             m_StartWait = new WaitForSeconds(m_StartDelay);
             m_EndWait = new WaitForSeconds(m_EndDelay);
             roundBarrels = new GameObject[m_BarrelNumber];
-            barrelsProperties = new Explosive_Barrel[m_BarrelNumber];
+            musicEvent = RuntimeManager.CreateInstance(soundtrack);
+            musicEvent.getParameter("SampleInstance", out sampleInstance);
+            musicEvent.start();
+            isRoundPlaying = false;
             timeText.enabled = false;
             pointsP1.enabled = false;
             pointsP2.enabled = false;
             SpawnAllTanks();
             SetCameraTargets();
-            InstantiateBarrels();
+            //InstantiateBarrels();
             //SetBarrelsPosition();
             Invoke("UIActivation", 3);
 
@@ -83,31 +93,11 @@ namespace Complete
         {
             for (int i = 0; i < m_BarrelNumber; i++)
             {
-                Instantiate(barrelPrefab);
-                roundBarrels[i] = barrelPrefab;
-                barrelsProperties[i] = GetComponent<Explosive_Barrel>();
+                roundBarrels[i] = Instantiate(barrelPrefab, barrelSpawns[i].position, barrelSpawns[i].rotation);
+                //roundBarrels[i] = barrelPrefab;
+                //barrelsProperties[i] = GetComponent<Explosive_Barrel>();
             }
         }
-
-        void SetBarrelsPosition()
-        {
-
-            for (int i = 0; i < roundBarrels.Length; i++)
-            {
-                int spawnPointIndex = UnityEngine.Random.Range(0, barrelSpawns.Length);
-                Barrel_Spawn_Manager spawnProperty = barrelSpawns[spawnPointIndex].gameObject.GetComponent<Barrel_Spawn_Manager>();
-                if (spawnProperty.containBarrel == false)
-                {
-                    roundBarrels[i].transform.position = barrelSpawns[spawnPointIndex].position;
-                }
-                else
-                {
-                    continue;
-                }
-            }
-        }
-
-
 
         private void SetCameraTargets()
         {
@@ -142,6 +132,7 @@ namespace Complete
             if (m_GameWinner != null)
             {
                 // If there is a game winner, restart the level.
+                musicEvent.stop(STOP_MODE.IMMEDIATE);
                 SceneManager.LoadScene("GameOver");
             }
             else
@@ -154,8 +145,14 @@ namespace Complete
 
         private void Update()
         {
+            soundTimer += Time.deltaTime;
+            if (soundTimer >= 7)
+            {
+                sampleInstance.setValue(UnityEngine.Random.Range(0, 3));
+                soundTimer = 0;
+            }
             OneTankLeft();
-            if (timeText.IsActive() == true)
+            if (timeText.IsActive() == true && isRoundPlaying)
                 timeLeft -= Time.deltaTime;
             timeText.text = ("Time\n" + (int)timeLeft);
 
@@ -171,8 +168,8 @@ namespace Complete
             // As soon as the round starts reset the tanks and make sure they can't move.
             ResetAllTanks();
             DisableTankControl();
-            EnableBarrels();
-            SetBarrelsPosition();
+            InstantiateBarrels();
+            //SetBarrelsPosition();
             Invoke("UIActivation", 3);
 
             // Snap the camera's zoom and position to something appropriate for the reset tanks.
@@ -212,6 +209,7 @@ namespace Complete
             timeText.enabled = false;
             pointsP1.enabled = false;
             pointsP2.enabled = false;
+            timeLeft = 90;
 
             // Clear the winner from the previous round.
             m_RoundWinner = null;
@@ -394,6 +392,7 @@ namespace Complete
             timeText.enabled = true;
             pointsP1.enabled = true;
             pointsP2.enabled = true;
+            isRoundPlaying = true;
         }
 
         void UIDeactivation()
@@ -401,23 +400,20 @@ namespace Complete
             timeText.enabled = false;
             pointsP1.enabled = false;
             pointsP2.enabled = false;
-        }
-
-        public void EnableBarrels()
-        {
-            for (int i = 0; i < roundBarrels.Length; i++)
-            {
-                roundBarrels[i].SetActive(true);
-                barrelsProperties[i].ResetBarrel();
-
-            }
+            isRoundPlaying = false;
         }
 
         public void DisableBarrels()
         {
             for (int i = 0; i < roundBarrels.Length; i++)
             {
-                roundBarrels[i].SetActive(false);
+                DestroyImmediate(roundBarrels[i], true);
+
+            }
+
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("BarrelExplosionParticle"))
+            {
+                DestroyImmediate(go);
             }
         }
     }
