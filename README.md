@@ -1,7 +1,7 @@
 # Barrel Rampage
 
 Em Barrel Rampage, dois jogadores se utilizam do mesmo teclado para batalhar. O objetivo é destruir o maior número de barris dentro do tempo limite. Os competidores ainda podem destruir um ao outro, ganhando vantagem sobre o outro.
-Descreva aqui o que é o projeto e indique o link da Wiki para saber mais sobre o projeto
+https://github.com/pucspcos/projetocos2017-barrel-rampage/wiki/Sobre-o-Jogo
 
 # Nome completo dos integrantes do projeto:
 
@@ -11,7 +11,8 @@ Descreva aqui o que é o projeto e indique o link da Wiki para saber mais sobre 
 
 # Imagens do jogo:
 
-Inserir imagens do jogo.
+![Concept 1](https://github.com/pucspcos/projetocos2017-barrel-rampage/blob/master/Concepts/Concept1.jpg)
+![Concept 2](https://github.com/pucspcos/projetocos2017-barrel-rampage/blob/master/Concepts/Concept2.jpg)
 
 # Link no Itch IO para o download dos executáveis do jogo:
 
