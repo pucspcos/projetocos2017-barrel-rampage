@@ -12,6 +12,7 @@ https://github.com/pucspcos/projetocos2017-barrel-rampage/wiki/Sobre-o-Jogo
 # Imagens do jogo:
 
 Inserir imagens do jogo.
+![](https://github.com/pucspcos/projetocos2017-barrel-rampage/blob/master/Concepts/Concept2.jpg)
 
 # Link no Itch IO para o download dos executáveis do jogo:
 
