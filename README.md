@@ -26,6 +26,14 @@ https://github.com/pucspcos/projetocos2017-barrel-rampage/wiki/Sobre-o-Jogo
 ![Concept 1](https://github.com/pucspcos/projetocos2017-barrel-rampage/blob/master/Concepts/Concept1.jpg)
 ![Concept 2](https://github.com/pucspcos/projetocos2017-barrel-rampage/blob/master/Concepts/Concept2.jpg)
 ![Gameplay 1](https://github.com/pucspcos/projetocos2017-barrel-rampage/blob/master/Screenshots/Gameplay.jpg)
+![Menu](https://github.com/pucspcos/projetocos2017-barrel-rampage/blob/master/Screenshots/Menu.png)
+![](https://github.com/pucspcos/projetocos2017-barrel-rampage/blob/master/Screenshots/Round_Start.png)
+![](https://github.com/pucspcos/projetocos2017-barrel-rampage/blob/master/Screenshots/Gameplay2.png)
+![](https://github.com/pucspcos/projetocos2017-barrel-rampage/blob/master/Screenshots/SMG_Shot.png)
+![](https://github.com/pucspcos/projetocos2017-barrel-rampage/blob/master/Screenshots/Cannon_Shot.png)
+![](https://github.com/pucspcos/projetocos2017-barrel-rampage/blob/master/Screenshots/Enemy_Kill.png)
+![](https://github.com/pucspcos/projetocos2017-barrel-rampage/blob/master/Screenshots/Round_End.png)
+![](https://github.com/pucspcos/projetocos2017-barrel-rampage/blob/master/Screenshots/Game_Win.png)
 
 # Link no Itch IO para o download dos executáveis do jogo:
 
