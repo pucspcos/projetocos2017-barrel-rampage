@@ -5,9 +5,21 @@ https://github.com/pucspcos/projetocos2017-barrel-rampage/wiki/Sobre-o-Jogo
 
 # Nome completo dos integrantes do projeto:
 
-* André Franco
-* Renan da Silva Dores
-* Renato Francelino Biasoli
+* André Luís dos Reis Franco R.A.00166098
+   
+       facebook.com/AndreLRFranco
+       
+      AndreLRFranco@gmail.com   
+* Renan da Silva Dores R.A.00166115
+   
+    facebook.com/renan.s.dores
+    
+    renandores18@gmail.com
+* Renato Francelino Biasoli R.A.00167727
+
+   facebook.com/renato.biasoli
+   
+   rfbiasoli@gmail.com
 
 # Imagens do jogo:
 

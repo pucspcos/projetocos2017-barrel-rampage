@@ -105,7 +105,8 @@ namespace Complete
         private void FireSMG(string playerTag)
         {
             Rigidbody shotInstance = Instantiate(m_SMGShot, m_SMGFireTransform.position, m_SMGFireTransform.rotation) as Rigidbody;
-            shotInstance.AddForce(m_SMGFireTransform.transform.forward * Time.deltaTime * 50);
+            //shotInstance.AddForce(m_SMGFireTransform.transform.forward * Time.deltaTime * 50);
+            shotInstance.AddForce(m_SMGFireTransform.transform.forward * Time.deltaTime * 150);
             shotInstance.tag = playerTag;
             m_ShootingAudio.clip = m_FireClip;
             m_ShootingAudio.Play();
