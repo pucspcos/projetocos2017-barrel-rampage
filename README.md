@@ -6,10 +6,10 @@ https://github.com/pucspcos/projetocos2017-barrel-rampage/wiki/Sobre-o-Jogo
 # Nome completo dos integrantes do projeto:
 
 * André Luís dos Reis Franco R.A.00166098
-   
-       facebook.com/AndreLRFranco
-       
-      AndreLRFranco@gmail.com   
+
+  facebook.com/AndreLRFranco
+
+  AndreLRFranco@gmail.com   
 * Renan da Silva Dores R.A.00166115
    
     facebook.com/renan.s.dores
