@@ -11,7 +11,7 @@ namespace Complete
 
         void Update()
         {
-            m_CurrentLifeTime += Time.deltaTime * 3;
+            m_CurrentLifeTime += Time.deltaTime * 5.5f;
             if (m_CurrentLifeTime >= m_MaxLifeTime)
             {
                 Destroy(gameObject);
