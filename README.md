@@ -1,6 +1,7 @@
 # Barrel Rampage
 
 Em Barrel Rampage, dois jogadores se utilizam do mesmo teclado para batalhar. O objetivo é destruir o maior número de barris dentro do tempo limite. Os competidores ainda podem destruir um ao outro, ganhando vantagem sobre o outro.
+
 Link da Wiki:
 https://github.com/pucspcos/projetocos2017-barrel-rampage/wiki/Sobre-o-Jogo
 
