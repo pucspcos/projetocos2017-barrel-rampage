@@ -6,6 +6,7 @@ Link da Wiki:
 https://github.com/pucspcos/projetocos2017-barrel-rampage/wiki/Sobre-o-Jogo
 
 Website do Jogo:
+https://barrelrampage.wixsite.com/barrelrampage
 
 
 # Nome completo dos integrantes do projeto:
